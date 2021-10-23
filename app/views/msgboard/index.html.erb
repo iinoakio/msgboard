@@ -1,0 +1,50 @@
+<div class="main_window">
+    <h1 class="display-1">MsgBoard</h1>   
+    
+    <%= form_with url: "/msgboard", method: :post, local: true do |form| %>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">名前</label>
+          <input required="required" type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="山田 太郎">
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">メール</label>
+          <input required="required" type="email" name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">メッセージ</label>
+          <textarea required="required" class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">投稿</button>
+        </div>
+      <% end %>
+    
+  
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"  style="width: 40%">メッセージ</th>
+        <th scope="col">名前</th>
+        <th scope="col">メール</th>
+        <th scope="col">投稿日時</th>
+      </tr>
+    </thead>
+  <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= post.message %></td>
+        <td><%= post.name %></td>
+        <td><%= post.email %></td>
+        <td><%= post.created_at %></td>
+       </tr>
+    </tbody>
+    <!--<P><%= post.message %>1 <%= post.name %>2  <%= post.email %>3  <%= post.created_at %>4 </P>-->
+  <% end %>
+  </table>
+    
+    
+</div>
+
